@@ -482,17 +482,17 @@ def seg_track_app():
 
                 tab_video_input = gr.Tab(label="Video type input")
                 with tab_video_input:
-                    input_video = gr.Video(label='Input video').style(height=550)
+                    input_video = gr.Video(label='Input video')
                 
                 tab_img_seq_input = gr.Tab(label="Image-Seq type input")
                 with tab_img_seq_input:
                     with gr.Row():
-                        input_img_seq = gr.File(label='Input Image-Seq').style(height=550)
+                        input_img_seq = gr.File(label='Input Image-Seq')
                         with gr.Column(scale=0.25):
                             extract_button = gr.Button(value="extract")
                             fps = gr.Slider(label='fps', minimum=5, maximum=50, value=8, step=1)
 
-                input_first_frame = gr.Image(label='Segment result of first frame',interactive=True).style(height=550)
+                input_first_frame = gr.Image(label='Segment result of first frame',interactive=True)
 
 
                 tab_everything = gr.Tab(label="Everything")
@@ -536,7 +536,7 @@ def seg_track_app():
 
                 tab_stroke = gr.Tab(label="Stroke")
                 with tab_stroke:
-                    drawing_board = gr.Image(label='Drawing Board', tool="sketch", brush_radius=10, interactive=True)
+                    drawing_board = gr.Image(label='Drawing Board')
                     with gr.Row():
                         seg_acc_stroke = gr.Button(value="Segment", interactive=True)
                         # stroke_reset_but = gr.Button(
@@ -628,7 +628,7 @@ def seg_track_app():
                         with gr.Accordion("roll back options", open=False):
                         # tab_show_res = gr.Tab(label="Segment result of all frames")
                         # with tab_show_res:
-                            output_res = gr.Image(label='Segment result of all frames').style(height=550)
+                            output_res = gr.Image(label='Segment result of all frames')
                             frame_per = gr.Slider(
                                 label = "Percentage of Frames Viewed",
                                 minimum= 0.0,
@@ -638,7 +638,7 @@ def seg_track_app():
                             )
                             frame_per.release(show_res_by_slider, inputs=[input_video, input_img_seq, frame_per], outputs=[output_res, frame_num])
                             roll_back_button = gr.Button(value="Choose this mask to refine")
-                            refine_res = gr.Image(label='Refine masks').style(height=550)\
+                            refine_res = gr.Image(label='Refine masks')
 
                             tab_roll_back_click = gr.Tab(label="Click")
                             with tab_roll_back_click:
@@ -1098,8 +1098,8 @@ def seg_track_app():
                 inputs=[input_img_seq],
             )
     
-    app.queue(concurrency_count=1)
-    app.launch(debug=True, enable_queue=True, share=True)
+    app.queue()
+    app.launch(debug=True)
 
 
 if __name__ == "__main__":
